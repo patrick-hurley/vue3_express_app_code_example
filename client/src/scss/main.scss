@@ -1,0 +1,54 @@
+@import './vendor/mvp';
+@import './vendor/littleboot/grid';
+
+@import './base/input.scss';
+@import './component/answer';
+@import './component/question';
+@import './layout/container';
+
+* {
+    box-sizing: border-box;
+}
+
+a,
+p {
+    font-size: 20px;
+}
+
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+body {
+    background: #f7f7f7;
+    height: 100%;
+}
+
+button.back {
+    color: var(--color-link);
+    border-color: var(--color-link);
+    background: white;
+}
+
+.link-list {
+    a {
+        display: block;
+        margin-bottom: 30px;
+    }
+}
+
+.validation {
+    color: red;
+}
+
+.v-enter-active {
+    transition: opacity 0.2s;
+}
+.v-enter-from {
+    opacity: 0;
+}

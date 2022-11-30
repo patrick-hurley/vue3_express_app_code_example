@@ -1,0 +1,40 @@
+select,
+input,
+textarea {
+    border: 1px solid;
+    padding: 15px;
+}
+label {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+textarea {
+    height: 250px;
+}
+
+input,
+textarea {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sub-label {
+    color: var(--color-link);
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.radio {
+    margin-top: 30px;
+
+    label {
+        display: inline-block;
+        margin-right: 30px;
+        width: 50px;
+    }
+
+    input[type='radio'] {
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
+    }
+}
