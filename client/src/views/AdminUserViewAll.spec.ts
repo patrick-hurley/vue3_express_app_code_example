@@ -36,7 +36,7 @@ describe('AdminUserViewAll', () => {
         expect(noResults.exists()).toBeTruthy()
     })
 
-    it('Shows no results message when the are no users', async () => {
+    it('Shows returned users', async () => {
         getAllUsers.mockResolvedValueOnce({ data: users })
 
         const wrapper = factory()
