@@ -1,6 +1,5 @@
 import { sequelize } from '.'
 import { DataTypes, Model, Optional } from 'sequelize'
-import Answer from './Answer'
 
 interface QuestionAttributes {
     id: string
