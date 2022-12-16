@@ -31,11 +31,11 @@ describe('FormRadio', () => {
         const radioItems = wrapper.findAll('[data-testid="radio-item"]')
 
         const firstLabel = radioItems[0].find('label')
-        const firstInput = radioItems[0].find('input[type=radio]')
+        const firstInput = <HTMLInputElement>radioItems[0].find('input[type=radio]')
 
         expect(radioItems.length).toBe(radioValues.length)
         expect(firstLabel.text()).toBe(radioValues[0].label)
-        expect((<HTMLInputElement | null>firstInput.element)?.value).toBe(
+        expect(firstInput.value).toBe(
             radioValues[0].value
         )
     })

@@ -71,8 +71,6 @@ export default {
         logger.info('Getting answer set')
         const { userId, answerSet } = req.params
 
-        console.log({ userId, answerSet })
-
         try {
             const foundAnswerSet = await AnswerSet.findOne({
                 where: {
