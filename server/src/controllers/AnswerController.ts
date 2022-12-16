@@ -6,26 +6,38 @@ import Question from '../models/Question'
 import logger from '../config/logger'
 import { Request, Response } from 'express'
 
-interface Answer {
-    answer: string
-    questionId: string
+import createAnswerDto, { AnswerCreationPayload } from '../dtos/createAnswer'
+
+class AnswerItem {
+    constructor(
+        public answerSetId: string,
+        public answer: string,
+        public questionId: string
+    ) {}
 }
 
 export default {
     async createAnswerSet(req: Request, res: Response): Promise<Response> {
         logger.info('Creating answer set')
 
-        const { userId, answers } = req.body
+        const { userId, answers } = req.body as createAnswerDto
         const createdAnswerSet = await AnswerSet.create({
             userId,
         })
 
-        const answerPayload = answers.map((x: Answer) => {
-            return {
-                answerSetId: createdAnswerSet.id,
-                answer: x.answer,
-                questionId: x.questionId,
-            }
+        // const answerPayload = answers.map((x) => {
+        //     return {
+        //         answerSetId: createdAnswerSet.id,
+        //         answer: x.answer,
+        //         questionId: x.questionId,
+        //     }
+        // })
+
+        let answerPayload: AnswerCreationPayload[] = []
+        answers.forEach((obj) => {
+            answerPayload.push(
+                new AnswerItem(createdAnswerSet.id, obj.answer, obj.questionId)
+            )
         })
 
         try {

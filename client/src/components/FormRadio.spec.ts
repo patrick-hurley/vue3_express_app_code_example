@@ -31,13 +31,13 @@ describe('FormRadio', () => {
         const radioItems = wrapper.findAll('[data-testid="radio-item"]')
 
         const firstLabel = radioItems[0].find('label')
-        const firstInput = <HTMLInputElement>radioItems[0].find('input[type=radio]')
+        const firstInput = radioItems[0].find(
+            'input[type=radio]'
+        ) as unknown as HTMLInputElement
 
         expect(radioItems.length).toBe(radioValues.length)
         expect(firstLabel.text()).toBe(radioValues[0].label)
-        expect(firstInput.value).toBe(
-            radioValues[0].value
-        )
+        expect(firstInput.value).toBe(radioValues[0].value)
     })
 
     it('Emits selected radio button', async () => {

@@ -1,7 +1,6 @@
 import { sequelize } from '.'
 import { DataTypes, Model, Optional } from 'sequelize'
 
-
 interface AnswerAttributes {
     id: string
     answer: string
@@ -9,7 +8,8 @@ interface AnswerAttributes {
     answerSetId: string
 }
 
-interface AnswerCreationAttributes extends Optional<AnswerAttributes, 'id'> {}
+export interface AnswerCreationAttributes
+    extends Optional<AnswerAttributes, 'id'> {}
 
 interface AnswerInstance
     extends Model<AnswerAttributes, AnswerCreationAttributes>,
