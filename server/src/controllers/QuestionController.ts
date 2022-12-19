@@ -1,17 +1,23 @@
 import Question from '../models/Question'
-import logger from '../config/logger'
 import { Request, Response } from 'express'
+import createQuestionDto from '../dtos/createQuestion'
+
+class QuestionItem {
+    constructor(
+        public type: string,
+        public label: string,
+        public order: number
+    ) {}
+}
 
 export default {
     async createQuestion(req: Request, res: Response): Promise<Response> {
-        logger.info('Creating question')
-        const { type, label, order } = req.body
+        const { type, label, order } = req.body as createQuestionDto
+
         try {
-            const createdQuestion = await Question.create({
-                type,
-                label,
-                order,
-            })
+            const createdQuestion = await Question.create(
+                new QuestionItem(type, label, order)
+            )
             return res.status(200).send({
                 id: createdQuestion.id,
             })
@@ -20,7 +26,6 @@ export default {
         }
     },
     async getAllQuestions(req: Request, res: Response): Promise<Response> {
-        logger.info('Getting all questions')
         try {
             const foundQuestions = await Question.findAll({
                 order: [['order', 'ASC']],

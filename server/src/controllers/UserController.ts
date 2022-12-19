@@ -1,15 +1,16 @@
 import User from '../models/User'
-import logger from '../config/logger'
 import { Request, Response } from 'express'
+import createUserDto from '../dtos/createUser'
+
+class UserItem {
+    constructor(public name: string) {}
+}
 
 export default {
     async createUser(req: Request, res: Response): Promise<Response> {
-        logger.info('Creating user')
-        const { name } = req.body
+        const { name } = req.body as createUserDto
         try {
-            const createdUser = await User.create({
-                name,
-            })
+            const createdUser = await User.create(new UserItem(name))
             return res.status(200).send({
                 id: createdUser.id,
             })
@@ -18,7 +19,6 @@ export default {
         }
     },
     async getAllUsers(_req: Request, res: Response): Promise<Response> {
-        logger.info('Getting all users')
         try {
             const foundUsers = await User.findAll({
                 attributes: { exclude: ['createdAt', 'updatedAt'] },

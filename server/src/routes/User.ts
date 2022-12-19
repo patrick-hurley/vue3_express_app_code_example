@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 
-import AnswerController from '../controllers/AnswerController'
+import * as AnswerController from '../controllers/AnswerController'
 import AnswerPolicy from '../policies/AnswerPolicy'
 
 import UserPolicy from '../policies/UserPolicy'

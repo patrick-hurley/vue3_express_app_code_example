@@ -9,10 +9,11 @@ import app from './app'
 // logging
 import prettyerror from 'pretty-error'
 prettyerror.start()
+
 import colors from 'colors'
 colors.enable()
-import logger from './config/logger'
 
+import logger from './config/logger'
 process.on('warning', (e) => logger.warn(e.stack))
 
 /*
@@ -37,5 +38,5 @@ sequelize
         })
     })
     .catch((err: Error) => {
-        console.log(err)
+        logger.error(err)
     })

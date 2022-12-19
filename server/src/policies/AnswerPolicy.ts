@@ -1,13 +1,13 @@
 import Joi from 'joi'
-import ErrorUtility from '../utility/ErrorUtility'
-import MiscUtility from '../utility/MiscUtility'
+import * as ErrorUtility from '../utility/ErrorUtility'
+import * as FormatUtility from '../utility/FormatUtility'
 
 import { Request, Response, NextFunction } from 'express'
 
 export default {
     createAnswerSet(req: Request, res: Response, next: NextFunction) {
         try {
-            req.body = MiscUtility.trimAndNullObjectProperties(req.body)
+            req.body = FormatUtility.trimAndNullObjectProperties(req.body)
 
             const answer = Joi.object().keys({
                 questionId: Joi.string().uuid().required(),

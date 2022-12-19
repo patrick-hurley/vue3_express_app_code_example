@@ -1,8 +1,7 @@
 import { sequelize } from '.'
 import { DataTypes, Model, Optional } from 'sequelize'
 
-
-interface QuestionAttributes {
+export interface QuestionAttributes {
     id: string
     type: string
     label: string

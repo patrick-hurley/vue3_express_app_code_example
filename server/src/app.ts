@@ -26,11 +26,8 @@ Express setup
 -------------------------------
 */
 const app = express()
-
 app.use(bodyParser.json())
-
 app.use(cookieParser())
-
 app.use(cors())
 
 /* Clickjacking prevention */
@@ -61,7 +58,6 @@ if (process.env.HOSTING_ENV !== 'development') {
 Swagger
 -------------------------------
 */
-
 if (process.env.HOSTING_ENV === 'development') {
     expressJSDocSwagger(app)(swaggerOptions)
 }
